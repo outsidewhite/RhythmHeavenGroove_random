@@ -29,18 +29,45 @@ const state = {
   side: "front",
   seenStages: new Set(),
   needsRunReset: false,
+  gamesLoaded: false,
+  assetPrefix: "./",
   mode: "ready",
 };
 
 init();
 
 async function init() {
-  const response = await fetch("./games.json");
-  state.games = await response.json();
-  resetBag();
-  updateStats();
   bindEvents();
   showReady();
+
+  try {
+    await loadGames();
+    resetBag();
+    updateStats();
+  } catch (error) {
+    showLoadError(error);
+  }
+}
+
+async function loadGames() {
+  const candidates = ["./games.json", "../games.json"];
+
+  // GitHub Pagesの公開位置がルートでもサブディレクトリでも読めるように候補を順に試す
+  for (const path of candidates) {
+    try {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) continue;
+
+      state.games = await response.json();
+      state.assetPrefix = path.replace("games.json", "");
+      state.gamesLoaded = true;
+      return;
+    } catch {
+      // 次の候補を試すため、ここでは握りつぶす
+    }
+  }
+
+  throw new Error("games.json could not be loaded");
 }
 
 function bindEvents() {
@@ -114,6 +141,11 @@ function resetBag() {
 }
 
 function startRoulette() {
+  if (!state.gamesLoaded || state.games.length === 0) {
+    showLoadError(new Error("games.json is not ready"));
+    return;
+  }
+
   if (state.side === "front" && state.remaining.length === 0) {
     resetBag();
   }
@@ -199,7 +231,7 @@ function recordPerfect() {
 }
 
 function displayGame(game, isNight = false) {
-  elements.gameImage.src = `./${game.image_path}`;
+  elements.gameImage.src = getAssetUrl(game.image_path);
   elements.gameImage.alt = game.game_name_ja;
   elements.stageCode.textContent = game.stage;
   elements.gameName.textContent = getDisplayName(game, isNight);
@@ -210,7 +242,7 @@ function showReady() {
   const modeImage = state.side === "front" ? "Frontside.png" : "Flipside.png";
   const modeName = state.side === "front" ? "表" : "裏";
 
-  elements.gameImage.src = `./images/${modeImage}`;
+  elements.gameImage.src = getAssetUrl(`images/${modeImage}`);
   elements.gameImage.alt = `${modeName}モード`;
   elements.placeholder.classList.add("hidden");
   elements.imageFrame.classList.add("mode-ready");
@@ -248,7 +280,7 @@ function renderHistory() {
     title.textContent = getDisplayName(game, isNight);
     meta.textContent = `${game.stage} / ${game.game_name_en}`;
     icon.className = "history-icon";
-    icon.src = `./${game.image_path}`;
+    icon.src = getAssetUrl(game.image_path);
     icon.alt = "";
     icon.loading = "lazy";
 
@@ -262,6 +294,18 @@ function updateStats() {
   elements.streakCount.textContent = state.streak;
   elements.poolLabel.textContent = state.side === "front" ? "未抽選" : "抽選対象";
   elements.poolCount.textContent = state.side === "front" ? state.remaining.length : state.games.length;
+}
+
+function showLoadError(error) {
+  console.error(error);
+  elements.gameName.textContent = "games.jsonを読み込めません";
+  elements.stageCode.textContent = "配置を確認してください";
+  elements.mainButton.disabled = true;
+  elements.stopButton.disabled = true;
+}
+
+function getAssetUrl(path) {
+  return `${state.assetPrefix}${path}`;
 }
 
 function toggleSide() {
