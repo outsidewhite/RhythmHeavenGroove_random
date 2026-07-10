@@ -1,0 +1,482 @@
+[
+  {
+    "stage": "1-1",
+    "game_name_ja": "輪くぐり",
+    "game_name_en": "HoopTrundling",
+    "image_path": "images/1-1_HoopTrundling.png"
+  },
+  {
+    "stage": "1-2",
+    "game_name_ja": "パラソル",
+    "game_name_en": "BrollyGoodShow",
+    "image_path": "images/1-2_BrollyGoodShow.png"
+  },
+  {
+    "stage": "1-3",
+    "game_name_ja": "フライングディスク",
+    "game_name_en": "DiscDog",
+    "image_path": "images/1-3_DiscDog.png"
+  },
+  {
+    "stage": "1-4",
+    "game_name_ja": "アレのエサ",
+    "game_name_en": "FeedingtheBeast",
+    "image_path": "images/1-4_FeedingtheBeast.png"
+  },
+  {
+    "stage": "1-5",
+    "game_name_ja": "リミックス１",
+    "game_name_en": "Remix1",
+    "image_path": "images/1-5_Remix1.png"
+  },
+  {
+    "stage": "2-1",
+    "game_name_ja": "ケロケロロケット",
+    "game_name_en": "RibbitRocket",
+    "image_path": "images/2-1_RibbitRocket.png"
+  },
+  {
+    "stage": "2-2",
+    "game_name_ja": "カーアクション",
+    "game_name_en": "StopNGoNStop",
+    "image_path": "images/2-2_StopNGoNStop.png"
+  },
+  {
+    "stage": "2-3",
+    "game_name_ja": "ハードル",
+    "game_name_en": "HopNSlide",
+    "image_path": "images/2-3_HopNSlide.png"
+  },
+  {
+    "stage": "2-4",
+    "game_name_ja": "プチプチ研究室",
+    "game_name_en": "PopDontDrop",
+    "image_path": "images/2-4_PopDontDrop.png"
+  },
+  {
+    "stage": "2-5",
+    "game_name_ja": "リミックス２",
+    "game_name_en": "Remix2",
+    "image_path": "images/2-5_Remix2.png"
+  },
+  {
+    "stage": "3-1",
+    "game_name_ja": "下ごしらえ",
+    "game_name_en": "SliceNDiceKitchen",
+    "image_path": "images/3-1_SliceNDiceKitchen.png"
+  },
+  {
+    "stage": "3-2",
+    "game_name_ja": "へくしょいムーン",
+    "game_name_en": "SneezyMoon",
+    "image_path": "images/3-2_SneezyMoon.png"
+  },
+  {
+    "stage": "3-3",
+    "game_name_ja": "カニトリオ",
+    "game_name_en": "CrabSnacks",
+    "image_path": "images/3-3_CrabSnacks.png"
+  },
+  {
+    "stage": "3-4",
+    "game_name_ja": "コロコロ行進",
+    "game_name_en": "HopStopNRoll",
+    "image_path": "images/3-4_HopStopNRoll.png"
+  },
+  {
+    "stage": "3-5",
+    "game_name_ja": "リミックス３",
+    "game_name_en": "Remix3",
+    "image_path": "images/3-5_Remix3.png"
+  },
+  {
+    "stage": "4-1",
+    "game_name_ja": "パンプアップル",
+    "game_name_en": "FruitFlex",
+    "image_path": "images/4-1_FruitFlex.png"
+  },
+  {
+    "stage": "4-2",
+    "game_name_ja": "会話",
+    "game_name_en": "AlienAlphabet",
+    "image_path": "images/4-2_AlienAlphabet.png"
+  },
+  {
+    "stage": "4-3",
+    "game_name_ja": "リサイクル",
+    "game_name_en": "CanDo",
+    "image_path": "images/4-3_CanDo.png"
+  },
+  {
+    "stage": "4-4",
+    "game_name_ja": "ダンサー",
+    "game_name_en": "BackupSpotlight",
+    "image_path": "images/4-4_BackupSpotlight.png"
+  },
+  {
+    "stage": "4-5",
+    "game_name_ja": "リミックス４",
+    "game_name_en": "Remix4",
+    "image_path": "images/4-5_Remix4.png"
+  },
+  {
+    "stage": "5-1",
+    "game_name_ja": "虫取り",
+    "game_name_en": "FlutterSpeed",
+    "image_path": "images/5-1_FlutterSpeed.png"
+  },
+  {
+    "stage": "5-2",
+    "game_name_ja": "雷",
+    "game_name_en": "LightningBolting",
+    "image_path": "images/5-2_LightningBolting.png"
+  },
+  {
+    "stage": "5-3",
+    "game_name_ja": "そっとキャッチ",
+    "game_name_en": "YumBotSimulator",
+    "image_path": "images/5-3_YumBotSimulator.png"
+  },
+  {
+    "stage": "5-4",
+    "game_name_ja": "ワイパー",
+    "game_name_en": "WiperBosses",
+    "image_path": "images/5-4_WiperBosses.png"
+  },
+  {
+    "stage": "5-5",
+    "game_name_ja": "リミックス５",
+    "game_name_en": "Remix5",
+    "image_path": "images/5-5_Remix5.png"
+  },
+  {
+    "stage": "6-1",
+    "game_name_ja": "シュート練習",
+    "game_name_en": "SoccerDreams",
+    "image_path": "images/6-1_SoccerDreams.png"
+  },
+  {
+    "stage": "6-2",
+    "game_name_ja": "デッキブラシ",
+    "game_name_en": "SweeperStar",
+    "image_path": "images/6-2_SweeperStar.png"
+  },
+  {
+    "stage": "6-3",
+    "game_name_ja": "THE A",
+    "game_name_en": "AforEffort",
+    "image_path": "images/6-3_AforEffort.png"
+  },
+  {
+    "stage": "6-4",
+    "game_name_ja": "侍",
+    "game_name_en": "SpiritSlasher",
+    "image_path": "images/6-4_SpiritSlasher.png"
+  },
+  {
+    "stage": "6-5",
+    "game_name_ja": "リミックス６",
+    "game_name_en": "Remix6",
+    "image_path": "images/6-5_Remix6.png"
+  },
+  {
+    "stage": "7-1",
+    "game_name_ja": "カーアクション２",
+    "game_name_en": "StopNGoNStop2",
+    "image_path": "images/7-1_StopNGoNStop2.png"
+  },
+  {
+    "stage": "7-2",
+    "game_name_ja": "パンプアップル２",
+    "game_name_en": "FruitFlex2",
+    "image_path": "images/7-2_FruitFlex2.png"
+  },
+  {
+    "stage": "7-3",
+    "game_name_ja": "コロコロ行進２",
+    "game_name_en": "HopStopNRoll2",
+    "image_path": "images/7-3_HopStopNRoll2.png"
+  },
+  {
+    "stage": "7-4",
+    "game_name_ja": "パラソル２",
+    "game_name_en": "BrollyGoodShow2",
+    "image_path": "images/7-4_BrollyGoodShow2.png"
+  },
+  {
+    "stage": "7-5",
+    "game_name_ja": "リミックス７",
+    "game_name_en": "Remix7",
+    "image_path": "images/7-5_Remix7.png"
+  },
+  {
+    "stage": "8-1",
+    "game_name_ja": "そっとキャッチ２",
+    "game_name_en": "YumBotSimulator2",
+    "image_path": "images/8-1_YumBotSimulator2.png"
+  },
+  {
+    "stage": "8-2",
+    "game_name_ja": "へくしょいムーン２",
+    "game_name_en": "SneezyMoon2",
+    "image_path": "images/8-2_SneezyMoon2.png"
+  },
+  {
+    "stage": "8-3",
+    "game_name_ja": "ケロケロロケット２",
+    "game_name_en": "RibbitRocket2",
+    "image_path": "images/8-3_RibbitRocket2.png"
+  },
+  {
+    "stage": "8-4",
+    "game_name_ja": "会話２",
+    "game_name_en": "AlienAlphabet2",
+    "image_path": "images/8-4_AlienAlphabet2.png"
+  },
+  {
+    "stage": "8-5",
+    "game_name_ja": "リミックス８",
+    "game_name_en": "Remix8",
+    "image_path": "images/8-5_Remix8.png"
+  },
+  {
+    "stage": "9-1",
+    "game_name_ja": "輪くぐり２",
+    "game_name_en": "HoopTrundling2",
+    "image_path": "images/9-1_HoopTrundling2.png"
+  },
+  {
+    "stage": "9-2",
+    "game_name_ja": "ダンサー２",
+    "game_name_en": "BackupSpotlight2",
+    "image_path": "images/9-2_BackupSpotlight2.png"
+  },
+  {
+    "stage": "9-3",
+    "game_name_ja": "虫取り２",
+    "game_name_en": "FlutterSpeed2",
+    "image_path": "images/9-3_FlutterSpeed2.png"
+  },
+  {
+    "stage": "9-4",
+    "game_name_ja": "棒つかみ",
+    "game_name_en": "QuickHands",
+    "image_path": "images/9-4_QuickHands.png"
+  },
+  {
+    "stage": "9-5",
+    "game_name_ja": "リミックス９",
+    "game_name_en": "Remix9",
+    "image_path": "images/9-5_Remix9.png"
+  },
+  {
+    "stage": "10-1",
+    "game_name_ja": "デッキブラシ２",
+    "game_name_en": "SweeperStar2",
+    "image_path": "images/10-1_SweeperStar2.png"
+  },
+  {
+    "stage": "10-2",
+    "game_name_ja": "ハードル２",
+    "game_name_en": "HopNSlide2",
+    "image_path": "images/10-2_HopNSlide2.png"
+  },
+  {
+    "stage": "10-3",
+    "game_name_ja": "雷２",
+    "game_name_en": "LightningBolting2",
+    "image_path": "images/10-3_LightningBolting2.png"
+  },
+  {
+    "stage": "10-4",
+    "game_name_ja": "PETとなわとび",
+    "game_name_en": "PETandJumpRope",
+    "image_path": "images/10-4_PETandJumpRope.png"
+  },
+  {
+    "stage": "10-5",
+    "game_name_ja": "リミックス１０",
+    "game_name_en": "Remix10",
+    "image_path": "images/10-5_Remix10.png"
+  },
+  {
+    "stage": "11-1",
+    "game_name_ja": "シュート練習２",
+    "game_name_en": "SoccerDreams2",
+    "image_path": "images/11-1_SoccerDreams2.png"
+  },
+  {
+    "stage": "11-2",
+    "game_name_ja": "フライングディスク２",
+    "game_name_en": "DiscDog2",
+    "image_path": "images/11-2_DiscDog2.png"
+  },
+  {
+    "stage": "11-3",
+    "game_name_ja": "カニトリオ２",
+    "game_name_en": "CrabSnacks2",
+    "image_path": "images/11-3_CrabSnacks2.png"
+  },
+  {
+    "stage": "11-4",
+    "game_name_ja": "ガーディアン",
+    "game_name_en": "SpaceSentry",
+    "image_path": "images/11-4_SpaceSentry.png"
+  },
+  {
+    "stage": "11-5",
+    "game_name_ja": "リミックス１１",
+    "game_name_en": "Remix11",
+    "image_path": "images/11-5_Remix11.png"
+  },
+  {
+    "stage": "12-1",
+    "game_name_ja": "棒つかみ２",
+    "game_name_en": "QuickHands2",
+    "image_path": "images/12-1_QuickHands2.png"
+  },
+  {
+    "stage": "12-2",
+    "game_name_ja": "侍２",
+    "game_name_en": "SpiritSlasher2",
+    "image_path": "images/12-2_SpiritSlasher2.png"
+  },
+  {
+    "stage": "12-3",
+    "game_name_ja": "ワイパー２",
+    "game_name_en": "WiperBosses2",
+    "image_path": "images/12-3_WiperBosses2.png"
+  },
+  {
+    "stage": "12-4",
+    "game_name_ja": "手拍子",
+    "game_name_en": "High-FiveFever",
+    "image_path": "images/12-4_High-FiveFever.png"
+  },
+  {
+    "stage": "12-5",
+    "game_name_ja": "リミックス１２",
+    "game_name_en": "Remix12",
+    "image_path": "images/12-5_Remix12.png"
+  },
+  {
+    "stage": "13-1",
+    "game_name_ja": "リサイクル２",
+    "game_name_en": "CanDo2",
+    "image_path": "images/13-1_CanDo2.png"
+  },
+  {
+    "stage": "13-2",
+    "game_name_ja": "PETとなわとび２",
+    "game_name_en": "SodaHop",
+    "image_path": "images/13-2_SodaHop.png"
+  },
+  {
+    "stage": "13-3",
+    "game_name_ja": "THE A２",
+    "game_name_en": "AforEffort2",
+    "image_path": "images/13-3_AforEffort2.png"
+  },
+  {
+    "stage": "13-4",
+    "game_name_ja": "くっしん菌",
+    "game_name_en": "GermAerobics",
+    "image_path": "images/13-4_GermAerobics.png"
+  },
+  {
+    "stage": "13-5",
+    "game_name_ja": "リミックス１３",
+    "game_name_en": "Remix13",
+    "image_path": "images/13-5_Remix13.png"
+  },
+  {
+    "stage": "14-1",
+    "game_name_ja": "ガーディアン２",
+    "game_name_en": "SpaceSentry2",
+    "image_path": "images/14-1_SpaceSentry2.png"
+  },
+  {
+    "stage": "14-2",
+    "game_name_ja": "下ごしらえ２",
+    "game_name_en": "SliceNDiceKitchen2",
+    "image_path": "images/14-2_SliceNDiceKitchen2.png"
+  },
+  {
+    "stage": "14-3",
+    "game_name_ja": "プチプチ研究室２",
+    "game_name_en": "PopDontDrop2",
+    "image_path": "images/14-3_PopDontDrop2.png"
+  },
+  {
+    "stage": "14-4",
+    "game_name_ja": "わたり鳥",
+    "game_name_en": "SynchroWings",
+    "image_path": "images/14-4_SynchroWings.png"
+  },
+  {
+    "stage": "14-5",
+    "game_name_ja": "リミックス１４",
+    "game_name_en": "Remix14",
+    "image_path": "images/14-5_Remix14.png"
+  },
+  {
+    "stage": "15-1",
+    "game_name_ja": "くっしん菌２",
+    "game_name_en": "GermAerobics2",
+    "image_path": "images/15-1_GermAerobics2.png"
+  },
+  {
+    "stage": "15-2",
+    "game_name_ja": "アレのエサ２",
+    "game_name_en": "FeedingtheBeast2",
+    "image_path": "images/15-2_FeedingtheBeast2.png"
+  },
+  {
+    "stage": "15-3",
+    "game_name_ja": "手拍子２",
+    "game_name_en": "High-FiveFever2",
+    "image_path": "images/15-3_High-FiveFever2.png"
+  },
+  {
+    "stage": "15-4",
+    "game_name_ja": "わたり鳥２",
+    "game_name_en": "SynchroWings",
+    "image_path": "images/15-4_SynchroWings.png"
+  },
+  {
+    "stage": "15-5",
+    "game_name_ja": "リミックス１５",
+    "game_name_en": "Remix15",
+    "image_path": "images/15-5_Remix15.png"
+  },
+  {
+    "stage": "16-1",
+    "game_name_ja": "リミックス１６",
+    "game_name_en": "Remix16",
+    "image_path": "images/16-1_Remix16.png"
+  },
+  {
+    "stage": "16-2",
+    "game_name_ja": "リミックス１７",
+    "game_name_en": "Remix17",
+    "image_path": "images/16-2_Remix17.png"
+  },
+  {
+    "stage": "16-3",
+    "game_name_ja": "リミックス１８",
+    "game_name_en": "Remix18",
+    "image_path": "images/16-3_Remix18.png"
+  },
+  {
+    "stage": "16-4",
+    "game_name_ja": "リミックス１９",
+    "game_name_en": "Remix19",
+    "image_path": "images/16-4_Remix19.png"
+  },
+  {
+    "stage": "16-5",
+    "game_name_ja": "リミックス２０",
+    "game_name_en": "Remix20",
+    "image_path": "images/16-5_Remix20.png"
+  }
+]
