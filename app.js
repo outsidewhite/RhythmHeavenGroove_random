@@ -31,6 +31,7 @@ const state = {
   side: "front",
   seenStages: new Set(),
   needsRunReset: false,
+  hasActiveRun: false,
   gamesLoaded: false,
   assetPrefix: "./",
   mode: "ready",
@@ -100,11 +101,9 @@ function bindEvents() {
 }
 
 function resetRun() {
-  const failedDraw = getFailedDraw();
+  if (state.isSpinning) return;
 
-  if (state.isSpinning) {
-    stopSpinner();
-  }
+  const failedDraw = getFailedDraw();
 
   if (!failedDraw) {
     resetRunState();
@@ -117,6 +116,7 @@ function resetRun() {
   state.currentDraw = null;
   state.rouletteGame = null;
   state.needsRunReset = true;
+  state.hasActiveRun = false;
   state.mode = "ready";
   renderHistory();
   updateStats();
@@ -134,6 +134,7 @@ function resetRunState() {
   state.streak = 0;
   state.seenStages = new Set();
   state.needsRunReset = false;
+  state.hasActiveRun = false;
   state.mode = "ready";
   resetBag();
   renderHistory();
@@ -158,10 +159,11 @@ function startRoulette() {
   }
 
   state.isSpinning = true;
+  state.hasActiveRun = true;
   state.mode = "spinning";
   elements.mainButton.disabled = true;
   elements.stopButton.disabled = false;
-  elements.resetButton.disabled = false;
+  elements.resetButton.disabled = true;
   elements.mainButton.textContent = "抽選中...";
   elements.mainButton.classList.remove("perfect");
   elements.gameStage.classList.add("spinning");
@@ -170,6 +172,7 @@ function startRoulette() {
   // ストップを押すまで、未抽選リスト内のゲームだけを高速に切り替える
   spinOnce();
   state.spinnerId = window.setInterval(spinOnce, 58);
+  saveState();
 }
 
 function stopRoulette() {
@@ -314,6 +317,7 @@ function saveState() {
     remainingStages: state.remaining.map((game) => game.stage),
     seenStages: [...state.seenStages],
     needsRunReset: state.needsRunReset,
+    hasActiveRun: state.hasActiveRun,
     mode: state.currentDraw ? "perfect" : "ready",
     currentDraw: serializeDraw(state.currentDraw),
     history: state.history.map(serializeDraw).filter(Boolean),
@@ -345,6 +349,10 @@ function restoreSavedState() {
     state.currentGame = restoredCurrentDraw?.game ?? null;
     state.rouletteGame = null;
     state.needsRunReset = Boolean(saved.needsRunReset);
+    // 連荘開始後は、やりなおしを押すまで表/裏モードを固定する
+    state.hasActiveRun =
+      !state.needsRunReset &&
+      (Boolean(saved.hasActiveRun) || Boolean(restoredCurrentDraw) || state.streak > 0);
     state.mode = restoredCurrentDraw ? "perfect" : "ready";
     state.seenStages = new Set(
       Array.isArray(saved.seenStages)
@@ -431,7 +439,7 @@ function getAssetUrl(path) {
 }
 
 function toggleSide() {
-  if (state.mode !== "ready" || state.isSpinning) return;
+  if (state.mode !== "ready" || state.isSpinning || state.hasActiveRun) return;
 
   // 開始前の画像タップで表/裏モードを切り替える
   state.side = state.side === "front" ? "flipside" : "front";
