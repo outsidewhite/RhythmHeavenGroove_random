@@ -16,6 +16,8 @@ const elements = {
   emptyHistory: document.querySelector("#emptyHistory"),
 };
 
+const STORAGE_KEY = "rhythmHeavenGrooveRenshanState";
+
 const state = {
   games: [],
   remaining: [],
@@ -42,8 +44,11 @@ async function init() {
 
   try {
     await loadGames();
-    resetBag();
-    updateStats();
+    if (!restoreSavedState()) {
+      resetBag();
+      updateStats();
+      saveState();
+    }
   } catch (error) {
     showLoadError(error);
   }
@@ -117,6 +122,7 @@ function resetRun() {
   updateStats();
   elements.streak.classList.add("failed");
   showReady();
+  saveState();
 }
 
 function resetRunState() {
@@ -133,6 +139,7 @@ function resetRunState() {
   renderHistory();
   updateStats();
   elements.streak.classList.remove("failed");
+  saveState();
 }
 
 function resetBag() {
@@ -188,6 +195,7 @@ function stopRoulette() {
   elements.mainButton.textContent = "パーフェクト!";
   elements.mainButton.classList.add("perfect");
   updateStats();
+  saveState();
 }
 
 function spinOnce() {
@@ -228,6 +236,7 @@ function recordPerfect() {
   state.currentDraw = null;
   renderHistory();
   updateStats();
+  saveState();
 }
 
 function displayGame(game, isNight = false) {
@@ -296,6 +305,119 @@ function updateStats() {
   elements.poolCount.textContent = state.side === "front" ? state.remaining.length : state.games.length;
 }
 
+function saveState() {
+  if (!state.gamesLoaded) return;
+
+  const payload = {
+    side: state.side,
+    streak: state.streak,
+    remainingStages: state.remaining.map((game) => game.stage),
+    seenStages: [...state.seenStages],
+    needsRunReset: state.needsRunReset,
+    mode: state.currentDraw ? "perfect" : "ready",
+    currentDraw: serializeDraw(state.currentDraw),
+    history: state.history.map(serializeDraw).filter(Boolean),
+  };
+
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  } catch (error) {
+    console.warn("状態の保存に失敗しました", error);
+  }
+}
+
+function restoreSavedState() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return false;
+
+  try {
+    const saved = JSON.parse(raw);
+    const gamesByStage = new Map(state.games.map((game) => [game.stage, game]));
+    const restoredHistory = Array.isArray(saved.history)
+      ? saved.history.map((draw) => restoreDraw(draw, gamesByStage)).filter(Boolean)
+      : [];
+    const restoredCurrentDraw = restoreDraw(saved.currentDraw, gamesByStage);
+
+    state.side = saved.side === "flipside" ? "flipside" : "front";
+    state.streak = Number.isFinite(saved.streak) ? saved.streak : 0;
+    state.history = restoredHistory;
+    state.currentDraw = restoredCurrentDraw;
+    state.currentGame = restoredCurrentDraw?.game ?? null;
+    state.rouletteGame = null;
+    state.needsRunReset = Boolean(saved.needsRunReset);
+    state.mode = restoredCurrentDraw ? "perfect" : "ready";
+    state.seenStages = new Set(
+      Array.isArray(saved.seenStages)
+        ? saved.seenStages.filter((stage) => gamesByStage.has(stage))
+        : [],
+    );
+    state.remaining = restoreRemaining(saved.remainingStages, gamesByStage);
+
+    if (state.remaining.length === 0 && state.side === "front" && !restoredCurrentDraw) {
+      resetBag();
+    }
+
+    renderHistory();
+    updateStats();
+    elements.streak.classList.toggle("failed", state.needsRunReset);
+
+    if (restoredCurrentDraw && !state.needsRunReset) {
+      restorePerfectDisplay(restoredCurrentDraw);
+    } else {
+      showReady();
+    }
+
+    return true;
+  } catch (error) {
+    console.warn("保存状態の復元に失敗しました", error);
+    localStorage.removeItem(STORAGE_KEY);
+    return false;
+  }
+}
+
+function serializeDraw(draw) {
+  if (!draw?.game) return null;
+
+  return {
+    stage: draw.game.stage,
+    isNight: Boolean(draw.isNight),
+    status: draw.status ?? "perfect",
+  };
+}
+
+function restoreDraw(draw, gamesByStage) {
+  if (!draw?.stage || !gamesByStage.has(draw.stage)) return null;
+
+  return {
+    game: gamesByStage.get(draw.stage),
+    isNight: Boolean(draw.isNight),
+    status: draw.status ?? "perfect",
+  };
+}
+
+function restoreRemaining(stages, gamesByStage) {
+  if (!Array.isArray(stages)) {
+    return shuffle([...state.games]);
+  }
+
+  const restored = stages
+    .map((stage) => gamesByStage.get(stage))
+    .filter(Boolean);
+
+  // 保存済みの未抽選リストが壊れていた場合は、新しい一巡を作る
+  return restored.length > 0 ? restored : shuffle([...state.games]);
+}
+
+function restorePerfectDisplay(draw) {
+  displayGame(draw.game, draw.isNight);
+  elements.gameStage.classList.remove("spinning");
+  elements.mainButton.disabled = false;
+  elements.stopButton.disabled = true;
+  elements.resetButton.disabled = false;
+  elements.mainButton.textContent = "パーフェクト!";
+  elements.mainButton.classList.add("perfect");
+}
+
 function showLoadError(error) {
   console.error(error);
   elements.gameName.textContent = "games.jsonを読み込めません";
@@ -316,6 +438,7 @@ function toggleSide() {
   resetBag();
   updateStats();
   showReady();
+  saveState();
 }
 
 function getDisplayName(game, isNight) {
