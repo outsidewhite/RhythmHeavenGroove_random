@@ -35,7 +35,7 @@ const state = {
 init();
 
 async function init() {
-  const response = await fetch("../games.json");
+  const response = await fetch("./games.json");
   state.games = await response.json();
   resetBag();
   updateStats();
@@ -199,7 +199,7 @@ function recordPerfect() {
 }
 
 function displayGame(game, isNight = false) {
-  elements.gameImage.src = `../${game.image_path}`;
+  elements.gameImage.src = `./${game.image_path}`;
   elements.gameImage.alt = game.game_name_ja;
   elements.stageCode.textContent = game.stage;
   elements.gameName.textContent = getDisplayName(game, isNight);
@@ -210,7 +210,7 @@ function showReady() {
   const modeImage = state.side === "front" ? "Frontside.png" : "Flipside.png";
   const modeName = state.side === "front" ? "表" : "裏";
 
-  elements.gameImage.src = `../images/${modeImage}`;
+  elements.gameImage.src = `./images/${modeImage}`;
   elements.gameImage.alt = `${modeName}モード`;
   elements.placeholder.classList.add("hidden");
   elements.imageFrame.classList.add("mode-ready");
@@ -248,7 +248,7 @@ function renderHistory() {
     title.textContent = getDisplayName(game, isNight);
     meta.textContent = `${game.stage} / ${game.game_name_en}`;
     icon.className = "history-icon";
-    icon.src = `../${game.image_path}`;
+    icon.src = `./${game.image_path}`;
     icon.alt = "";
     icon.loading = "lazy";
 

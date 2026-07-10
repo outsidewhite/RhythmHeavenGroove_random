@@ -3,7 +3,7 @@
 GitHub Pagesでリポジトリルートを公開し、次のURLで開く想定です。
 
 ```text
-https://<user>.github.io/<repository>/ilb/
+https://<user>.github.io/<repository>/
 ```
 
-`ilb/app.js` は親ディレクトリの `games.json` と `images/` を参照します。
+`app.js` は同じディレクトリの `games.json` と `images/` を参照します。
