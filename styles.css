@@ -311,6 +311,16 @@ button {
   color: var(--muted);
 }
 
+/* サイト最下部の免責文を、主要画面より控えめに表示する */
+.site-footer {
+  width: min(1180px, calc(100% - 32px));
+  margin: -8px auto 24px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
 @media (max-width: 860px) {
   .app-shell {
     width: min(100% - 24px, 720px);
@@ -327,6 +337,11 @@ button {
 
   .history-panel {
     max-height: none;
+  }
+
+  .site-footer {
+    width: min(100% - 24px, 720px);
+    margin-top: 0;
   }
 
   .image-frame {
@@ -433,6 +448,11 @@ button {
   .history-icon {
     width: 42px;
     height: 42px;
+  }
+
+  .site-footer {
+    width: min(100% - 16px, 1180px);
+    font-size: 0.72rem;
   }
 }
 
